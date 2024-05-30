@@ -2,7 +2,7 @@ import hazelcast
 
 map_name = "distributed-map"
 
-def tasks_three_five():
+def third():
     client = hazelcast.HazelcastClient(
     cluster_name="my-cluster",
     cluster_members=[
@@ -22,7 +22,7 @@ def tasks_three_five():
         counter+=1
         map.put(key, counter)
 
-def sixth_task_no_locks():
+def nolocks():
     client = hazelcast.HazelcastClient(
     cluster_name="my-cluster",
     cluster_members=[
@@ -46,7 +46,7 @@ def sixth_task_no_locks():
         map.put(key, counter)
     print(map.get(key))
 
-def sixth_task_pessimistic():
+def pessimistic():
 	client = hazelcast.HazelcastClient(
     cluster_name="my-cluster",
     cluster_members=[
@@ -73,7 +73,7 @@ def sixth_task_pessimistic():
 			map.unlock(key)
 	print(map.get(key))
 
-def sixth_task_optimistic():
+def optimistic():
     client = hazelcast.HazelcastClient(
     cluster_name="my-cluster",
     cluster_members=[
@@ -101,7 +101,7 @@ def sixth_task_optimistic():
 
 if __name__ == "__main__":
 	
-	tasks_three_five()
-	sixth_task_no_locks()
-	sixth_task_pessimistic()
-	sixth_task_optimistic()
+	third()
+	nolocks()
+	pessimistic()
+	optimistic()
