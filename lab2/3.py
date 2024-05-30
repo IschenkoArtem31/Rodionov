@@ -17,10 +17,7 @@ distributed_map = client.get_map("distributed-map")
 for i in range(1000):
     distributed_map.set(i, f"value_{i}").result()
 
-# Проверка размера карты.
 print("Map size:", distributed_map.size().result())
 
-
-# Завершение работы клиента.
 client.shutdown()
 
