@@ -50,14 +50,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--port", type=int, required=True)
 args = parser.parse_args()
 
-# Connect to the Hazelcast cluster
 hz = hazelcast.HazelcastClient()
 
-# Create a distributed queue for message delivery
 queue_name = "message-queue"
 queue = hz.get_queue(queue_name).blocking()
 
-# Keep reading messages from the queue and storing them in the Hazelcast Map
 messages = hz.get_map("msg").blocking()
 
 @app.route('/messages', methods=['GET'])
